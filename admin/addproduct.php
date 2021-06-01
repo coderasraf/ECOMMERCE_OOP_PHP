@@ -1,8 +1,25 @@
 ﻿<?php include 'inc/header.php';?>
 <?php include 'inc/sidebar.php';?>
+<?php include '../classes/Classes.php';?>
+<?php 
+    
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+       $product = new Product();
+       $addProduct = $product->addProduct($_POST ,$_FILES);
+    }
+
+ ?>
+
 <div class="grid_10">
     <div class="box round first grid">
         <h2>Add New Product</h2>
+        <?php 
+
+            if (isset($addProduct)) {
+                echo $addProduct;
+            }
+
+         ?>
         <div class="block">               
          <form action="" method="post" enctype="multipart/form-data">
             <table class="form">
@@ -12,7 +29,7 @@
                         <label>Name</label>
                     </td>
                     <td>
-                        <input type="text" placeholder="Enter Product Name..." class="medium" />
+                        <input name="productName" type="text" placeholder="Enter Product Name..." class="medium" />
                     </td>
                 </tr>
 				<tr>
@@ -20,11 +37,16 @@
                         <label>Category</label>
                     </td>
                     <td>
-                        <select id="select" name="select">
+                        <select id="select" name="catId">
                             <option>Select Category</option>
-                            <option value="1">Category One</option>
-                            <option value="2">Category Two</option>
-                            <option value="3">Category Three</option>
+                            <?php 
+
+                                $category = new Category();
+                                $result = $category->getAllCat();
+                                if ($result) {
+                                  while ($row = $result->fetch_assoc()) {?>
+                                    <option value="<?= $row['catId']; ?>"><?= $row['catName']; ?></option>
+                                <?php }} ?>
                         </select>
                     </td>
                 </tr>
@@ -33,11 +55,16 @@
                         <label>Brand</label>
                     </td>
                     <td>
-                        <select id="select" name="select">
+                        <select id="select" name="brandId">
                             <option>Select Brand</option>
-                            <option value="1">Brand One</option>
-                            <option value="2">Brand Two</option>
-                            <option value="3">Brand Three</option>
+                           <?php 
+
+                                $brand = new Brand();
+                                $result = $brand->getAllBrand();
+                                if ($result) {
+                                  while ($row = $result->fetch_assoc()) {?>
+                                    <option value="<?= $row['brandId']; ?>"><?= $row['brandName']; ?></option>
+                                <?php }} ?>
                         </select>
                     </td>
                 </tr>
@@ -47,7 +74,7 @@
                         <label>Description</label>
                     </td>
                     <td>
-                        <textarea class="tinymce"></textarea>
+                        <textarea name="body" class="tinymce"></textarea>
                     </td>
                 </tr>
 				<tr>
@@ -55,7 +82,7 @@
                         <label>Price</label>
                     </td>
                     <td>
-                        <input type="text" placeholder="Enter Price..." class="medium" />
+                        <input name="price" type="text" placeholder="Enter Price..." class="medium" />
                     </td>
                 </tr>
             
@@ -64,7 +91,7 @@
                         <label>Upload Image</label>
                     </td>
                     <td>
-                        <input type="file" />
+                        <input name="image" type="file" />
                     </td>
                 </tr>
 				
@@ -73,10 +100,10 @@
                         <label>Product Type</label>
                     </td>
                     <td>
-                        <select id="select" name="select">
+                        <select id="select" name="type">
                             <option>Select Type</option>
-                            <option value="1">Featured</option>
-                            <option value="2">Non-Featured</option>
+                            <option value="0">Featured</option>
+                            <option value="1">Non-Featured</option>
                         </select>
                     </td>
                 </tr>

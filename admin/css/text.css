@@ -96,3 +96,17 @@ fieldset
 {
 	margin-bottom: 20px;
 }
+
+.alert.alert-warning {
+    border-radius: 5px;
+    margin-bottom: 7px;
+    color: red;
+    font-size: 18px;
+}
+
+.alert.alert-success {
+    color: #008000c2;
+    border-radius: 5px;
+    margin-bottom: 7px;
+    font-size: 18px;
+}

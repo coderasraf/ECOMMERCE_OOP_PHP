@@ -1,32 +1,32 @@
-﻿<?php include 'inc/header.php';?>
+<?php include 'inc/header.php';?>
 <?php include 'inc/sidebar.php';?>
-<?php include '../classes/Category.php';?>
+<?php include '../classes/Brand.php';?>
 
 
 <?php 
 
     
-    $cat = new Category();
+    $brand = new Brand();
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $catName = $_POST['catName'];
-        $insertCat  = $cat->catInsert($catName);
+        $brandName = $_POST['brandName'];
+        $insertBrand  = $brand->brandInsert($brandName);
     }
 
  ?>
 
         <div class="grid_10">
             <div class="box round first grid">
-                <h2>Add New Category</h2>
+                <h2>Add New Brand</h2>
                <div class="block copyblock"> 
                 <?php 
-                    if (isset($insertCat)) {?>
-                            <?php echo $insertCat; ?>
+                    if (isset($insertBrand)) {?>
+                            <?php echo $insertBrand; ?>
                     <?php } ?>
                  <form method="POST" action="">
                     <table class="form">					
                         <tr>
                             <td>
-                                <input name="catName" type="text" placeholder="Enter Category Name..." class="medium" />
+                                <input name="brandName" type="text" placeholder="Enter Category Name..." class="medium" />
                             </td>
                         </tr>
 						<tr> 

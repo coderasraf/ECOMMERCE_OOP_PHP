@@ -22,6 +22,7 @@
           return $data;
        }
 
+
        public function title(){
           $path = $_SERVER['SCRIPT_FILENAME'];
           $title = basename($path, '.php');
