@@ -21,40 +21,45 @@
                     </div>
     	<div class="register_account">
     		<h3>Register New Account</h3>
+    		<?php 
+    			if (isset($insertUser)) {
+    				echo $insertUser;
+    			}
+    		 ?>
     		<form method="POST" action="">
 		   			 <table>
 		   				<tbody>
 						<tr>
 						<td>
 							<div>
-							<input type="text" name="name" placeholder="Enter your name">
+							<input value="<?php if(isset($_POST['name'])){ echo $_POST['name']; } ?>" type="text" name="name" placeholder="Enter your name">
 							</div>
 							
 							<div>
-							   <input type="text" name="city" placeholder="Your city">
+							   <input value="<?php if(isset($_POST['city'])){ echo $_POST['city']; } ?>" type="text" name="city" placeholder="Your city">
 							</div>
 							
 							<div>
-								<input type="text" name="zip" placeholder="Enter your zipcode">
+								<input value="<?php if(isset($_POST['zip'])){ echo $_POST['zip']; } ?>" type="text" name="zip" placeholder="Enter your zipcode">
 							</div>
 							<div>
-								<input type="email" name="email" placeholder="Your email">
-							</div>
+								<input value="<?php if(isset($_POST['email'])){ echo $_POST['email']; } ?>" type="email" name="email" placeholder="Your email">
+							</div> 
 		    			 </td>
 		    			<td>
 						<div>
-							<input type="text" name="address" placeholder="Enter your address">
+							<input value="<?php if(isset($_POST['address'])){ echo $_POST['address']; } ?>" type="text" name="address" placeholder="Enter your address">
 						</div>
 		    			<div>
-							<input type="text" name="country" placeholder="Enter your Country">
+							<input value="<?php if(isset($_POST['country'])){ echo $_POST['country']; } ?>" type="text" name="country" placeholder="Enter your Country">
 						</div>		        
 	
 		           <div>
-							<input type="text" name="phone" placeholder="Phone">
+							<input value="<?php if(isset($_POST['phone'])){ echo $_POST['phone']; } ?>"  type="text" name="phone" placeholder="Phone">
 						</div>
 				  
 				  		<div>
-							<input type="text" name="passoword" placeholder="Enter your passoword">
+							<input value="<?php if(isset($password)){ echo $password; } ?>" type="password" name="password" placeholder="Enter your passoword">
 						</div>
 		    	</td>
 		    </tr> 
