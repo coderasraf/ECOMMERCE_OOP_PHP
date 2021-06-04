@@ -55,4 +55,34 @@
 			}
 
 		}
+
+
+		// Customer Login
+
+		public function customerLogin($data){
+			$email = $this->fm->validation($data['email']);
+			$pass  = $this->fm->validation($data['password']);
+			$pass = md5($pass);
+
+			$query = "SELECT * FROM tbl_customer WHERE email = '$email' AND pass = '$pass'";
+			$chkLogin = $this->db->select($query);
+
+			if ($email == '' || $pass = '') {
+				$msg = "<div class='alert alert-warning'>Fields Must not be empty!</div>";
+				return $msg;
+			}
+			if(filter_var($email, FILTER_VALIDATE_EMAIL) == false){
+				$msg = "<div class='alert alert-warning'>Email address is not valid!</div>";
+				return $msg;
+			}
+
+			if($chkLogin != false) {
+				$msg = "<div class='alert alert-success'>You are logged in!</div>";
+				return $msg;
+			}else{
+				$msg = "<div class='alert alert-warning'>Email or Password wrong!</div>";
+				return $msg;
+			}
+
+		}
 	}

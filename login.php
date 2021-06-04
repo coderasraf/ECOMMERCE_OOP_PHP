@@ -2,8 +2,11 @@
 
 <?php 
 		if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])) {
-				
 				$insertUser = $cmr->insertCustomer($_POST);
+		}
+
+		if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
+				$login = $cmr->customerLogin($_POST);
 		}
  ?>
 
@@ -11,13 +14,20 @@
     <div class="content">
     	 <div class="login_panel">
         	<h3>Existing Customers</h3>
-        	<p>Sign in with the form below.</p>
-        	<form action="hello" method="get" id="member">
-                	<input name="Domain" type="text" value="Username" class="field" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Username';}">
-                    <input name="Domain" type="password" value="Password" class="field" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
-                 </form>
-                 <p class="note">If you forgot your passoword just enter your email and click <a href="#">here</a></p>
-                    <div class="buttons"><div><button class="grey">Sign In</button></div></div>
+        	<?php 
+        		if (isset($login)) {
+        			echo $login;
+        		}
+        	 ?>
+        	<form action="" method="POST" id="member">
+                	 <input value="<?php if(isset($_POST['email'])){ echo $_POST['email']; } ?>" name="email" type="email" placeholder="Enter your email">
+                   <input type="password" name="password" placeholder="Enter your passoword">
+                    <div class="buttons">
+                    	<div>
+                    		<button name="login" type="submit" class="grey">Sign In</button>
+                    	</div>
+                    </div>
+                    </form>
                     </div>
     	<div class="register_account">
     		<h3>Register New Account</h3>
@@ -59,7 +69,7 @@
 						</div>
 				  
 				  		<div>
-							<input value="<?php if(isset($password)){ echo $password; } ?>" type="password" name="password" placeholder="Enter your passoword">
+							<input value="<?php if(isset($_POST['password'])){ echo $_POST['password']; } ?>" type="password" name="password" placeholder="Enter your passoword">
 						</div>
 		    	</td>
 		    </tr> 
