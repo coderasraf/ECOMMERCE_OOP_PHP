@@ -1,13 +1,20 @@
 <?php include 'inc/header.php'; ?>
 
 <?php 
-		if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])) {
-				$insertUser = $cmr->insertCustomer($_POST);
-		}
+	$custLogin = Session::get('custLogin');
+	if ($custLogin) {
+		header("Location:order.php");
+	}
+ ?>
 
-		if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
-				$login = $cmr->customerLogin($_POST);
-		}
+<?php 
+	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])) {
+			$insertUser = $cmr->insertCustomer($_POST);
+	}
+
+	if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['login'])) {
+			$login = $cmr->customerLogin($_POST);
+	}
  ?>
 
  <div class="main">
@@ -19,6 +26,7 @@
         			echo $login;
         		}
         	 ?>
+
         	<form action="" method="POST" id="member">
                 	 <input value="<?php if(isset($_POST['email'])){ echo $_POST['email']; } ?>" name="email" type="email" placeholder="Enter your email">
                    <input type="password" name="password" placeholder="Enter your passoword">

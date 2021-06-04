@@ -801,7 +801,7 @@ p.note{
 .span_1_of_4  li span{
 	font-size:1.2em;
 	padding:0.2em 0;
-	color:#979797;
+	color: #fff;
 	display:block;
 	cursor:pointer;
 }
@@ -814,7 +814,7 @@ p.note{
 	height:30px;
 	padding: 0px 0 0 5px;
 	margin: 0;
-    display:inline-block;
+	display:inline-block;
 	cursor:pointer;
 }
 .social-icons li.facebook {

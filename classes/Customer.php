@@ -10,6 +10,7 @@
 
 		// Inserting user
 		public function insertCustomer($data){
+
 			$name 		= $this->fm->validation($data['name']);
 			$email 		= $this->fm->validation($data['email']);
 			$zip        = $this->fm->validation($data['zip']);
@@ -18,6 +19,7 @@
 			$country    = $this->fm->validation($data['country']);
 			$phone      = $this->fm->validation($data['phone']);
 			$password   = $this->fm->validation($data['password']);
+
 			$name       = mysqli_real_escape_string($this->db->link, $name);
 			$email      = mysqli_real_escape_string($this->db->link, $email);
 			$city       = mysqli_real_escape_string($this->db->link, $city);
@@ -84,7 +86,7 @@
 				Session::set('cmrName', $value['name']);
 				Session::set('cmrEmail', $value['email']);
 				
-				header('Location:order.php');
+				header('Location:order');
 
 			}else{
 				$msg = "<div class='alert alert-warning'>Email or Password wrong!</div>";

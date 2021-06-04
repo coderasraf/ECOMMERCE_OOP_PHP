@@ -50,7 +50,7 @@
   <div class="wrap">
 		<div class="header_top">
 			<div class="logo">
-				<a href="index.html"><img src="images/logo.png" alt="" /></a>
+				<a href="index"><img src="images/logo.png" alt="" /></a>
 			</div>
 			  <div class="header_top_right">
 			    <div class="search_box">
@@ -77,18 +77,33 @@
 							</a>
 						</div>
 			      </div>
-		   <div class="login"><a href="login.php">Login</a></div>
+
+			      <?php 
+			      	if (isset($_GET['cid'])) {
+			      		Session::destroy();
+			      	}
+			       ?>
+
+		   <div class="login">
+		   	<?php 
+						$custLogin = Session::get('custLogin');
+						if ($custLogin) { ?>
+		   			<a href="?cid=<?= Session::get('cmrId'); ?>">Logout</a>
+		   		<?php }else{ ?>
+		   			<a href="login">Login</a>
+		   		<?php } ?>
+		   </div>
 		 <div class="clear"></div>
 	 </div>
 	 <div class="clear"></div>
  </div>
 <div class="menu">
 	<ul id="dc_mega-menu-orange" class="dc_mm-orange">
-	  <li><a href="index.php">Home</a></li>
-	  <li><a href="products.php">Products</a> </li>
-	  <li><a href="topbrands.php">Top Brands</a></li>
-	  <li><a href="cart.php">Cart</a></li>
-	  <li><a href="contact.php">Contact</a> </li>
+	  <li><a href="index">Home</a></li>
+	  <li><a href="products">Products</a> </li>
+	  <li><a href="topbrands">Top Brands</a></li>
+	  <li><a href="cart">Cart</a></li>
+	  <li><a href="contact">Contact</a> </li>
 	  <div class="clear"></div>
 	</ul>
 </div>
