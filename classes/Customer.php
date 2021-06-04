@@ -77,8 +77,15 @@
 			}
 
 			if($chkLogin != false) {
-				$msg = "<div class='alert alert-success'>You are logged in!</div>";
-				return $msg;
+	
+				$value = $chkLogin->fetch_assoc();
+				Session::set('custLogin', true);
+				Session::set('cmrId', $value['id']);
+				Session::set('cmrName', $value['name']);
+				Session::set('cmrEmail', $value['email']);
+				
+				header('Location:order.php');
+
 			}else{
 				$msg = "<div class='alert alert-warning'>Email or Password wrong!</div>";
 				return $msg;
