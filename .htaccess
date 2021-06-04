@@ -14,4 +14,7 @@ RewriteRule ^search$ search.php [L]
 RewriteRule ^cart$ cart.php [L]
 RewriteRule ^order$ order.php [L]
 RewriteRule ^login$ login.php [L]
+RewriteRule ^profile$ profile.php [L]
+RewriteRule ^editprofile$ editprofile.php [L]
+
 

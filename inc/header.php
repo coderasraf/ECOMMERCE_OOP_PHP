@@ -70,8 +70,7 @@
 										}else{
 											echo("(Empty)");
 										}
-										
-									
+							
 									?>
 								</span>
 							</a>
@@ -100,11 +99,18 @@
  </div>
 <div class="menu">
 	<ul id="dc_mega-menu-orange" class="dc_mm-orange">
-	  <li><a href="index">Home</a></li>
+	  <li><a class="active" href="index">Home</a></li>
 	  <li><a href="products">Products</a> </li>
 	  <li><a href="topbrands">Top Brands</a></li>
-	  <li><a href="cart">Cart</a></li>
+	  <?php 
+	  	if ($getData) { ?>
+	 	 <li><a href="cart">Cart</a></li>
+	   <?php } ?>
 	  <li><a href="contact">Contact</a> </li>
+	  <?php 
+	  	if (Session::get('custLogin') == true) { ?>
+	  		<li><a href="profile">Profile</a> </li>
+		<?php } ?>
 	  <div class="clear"></div>
 	</ul>
 </div>

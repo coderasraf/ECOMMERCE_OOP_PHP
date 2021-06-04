@@ -86,12 +86,67 @@
 				Session::set('cmrName', $value['name']);
 				Session::set('cmrEmail', $value['email']);
 				
-				header('Location:order');
+				header('Location:cart');
 
 			}else{
 				$msg = "<div class='alert alert-warning'>Email or Password wrong!</div>";
 				return $msg;
 			}
+		}
 
+		// Get customer data from database
+		public function getCustomerData($id){
+			$query = "SELECT * FROM tbl_customer WHERE id='$id'";
+			$result = $this->db->select($query);
+			if ($result) {
+				return $result;
+			}else{
+				return false;
+			}
+		}
+
+
+		// Update userdata
+		public function updateUserInfo($data, $id){
+			$name = $this->fm->validation($data['name']);
+			$phone = $this->fm->validation($data['phone']);
+			$city = $this->fm->validation($data['city']);
+			$email = $this->fm->validation($data['email']);
+			$country = $this->fm->validation($data['country']);
+			$zip = $this->fm->validation($data['zip']);
+			$address = $this->fm->validation($data['address']);
+
+			$name  = mysqli_real_escape_string($this->db->link, $name);
+			$phone = mysqli_real_escape_string($this->db->link, $phone);
+			$city  = mysqli_real_escape_string($this->db->link, $city);
+			$email  = mysqli_real_escape_string($this->db->link, $email);
+			$country = mysqli_real_escape_string($this->db->link, $country);
+			$zip  = mysqli_real_escape_string($this->db->link, $zip);
+			$address  = mysqli_real_escape_string($this->db->link, $address);
+
+			if (!empty($name) && !empty($phone) && !empty($city) && !empty($country) && !empty($country) && !empty($email) && !empty($address)) {
+				$query ="UPDATE tbl_customer
+						SET 
+						name    = '$name',
+						address = '$address',
+						city    = '$city',
+						country = '$country',
+						zip     = '$zip',
+						phone   = '$phone',
+						email   = '$email' WHERE id='$id'";
+
+				$updateUser = $this->db->update($query);
+				if ($updateUser) {
+					$msg = "<div class='alert alert-success'>Profile Updated Successuflly!</div>";
+					return $msg;
+				}else{
+					$msg = "<div class='alert alert-warning'>Your data is not updated!</div>";
+					return $msg;
+				}
+
+			}else{
+				$msg = "<div class='alert alert-warning'>Field Must not be empty!</div>";
+				return $msg;
+			}
 		}
 	}
