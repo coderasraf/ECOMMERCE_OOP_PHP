@@ -80,6 +80,7 @@
 
 			      <?php 
 			      	if (isset($_GET['cid'])) {
+			      		$deletCustCart = $cart->deleteCustomerCart();
 			      		Session::destroy();
 			      	}
 			       ?>

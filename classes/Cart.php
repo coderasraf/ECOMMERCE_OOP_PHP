@@ -24,18 +24,19 @@
 			$checkQuery    = "SELECT * FROM tbl_cart WHERE productId='$productId' AND sId='$sId'";
 			$chk = $this->db->select($checkQuery);
 			
-			if (mysqli_num_rows($chk) > 0) {
-				echo "<script>alert('Product Alreay Exist!')</script>";
-			}else{
+			if ($chk != true) {
 				$query ="INSERT INTO tbl_cart (sId,productId,productName,price,quantity,image)
-					VALUES ('$sId','$productId','$productName','$productPrice','$quantity','$productImg')";
+				VALUES ('$sId','$productId','$productName','$productPrice','$quantity','$productImg')";
 				$addedToCart = $this->db->insert($query);
 				if ($addedToCart) {
 					echo "<script>window.location = 'cart.php'</script>";
 				}else{
 					echo "<script>window.location = 'index.php'</script>";
 				}
+			}else{
+				echo "<script>alert('Product Alreay Exist!')</script>";
 			}
+			
 		}
 
 		// getting cart product
@@ -78,6 +79,13 @@
 			return $result;
 		}
 
+		// Delete cart item when customer logout
+		public function deleteCustomerCart(){
+			$sessionId = session_id();
+			$query = "DELETE FROM tbl_cart WHERE sId='$sessionId'";
+			$result = $this->db->delete($query);
+			return $result;
+		}
 
 
 

@@ -162,6 +162,12 @@ input[type="number"] {
 	cursor:pointer;
 	outline:none;
 }
+
+.logo a img {
+    width: 155px;
+    object-fit: cover;
+}
+
 .wrapper-dropdown.active .dropdown{
 	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 	max-height: 400px;
