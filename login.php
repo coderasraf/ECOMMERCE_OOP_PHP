@@ -1,5 +1,12 @@
 <?php include 'inc/header.php'; ?>
 
+<?php 
+		if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signup'])) {
+				
+				$insertUser = $cmr->insertCustomer($_POST);
+		}
+ ?>
+
  <div class="main">
     <div class="content">
     	 <div class="login_panel">
@@ -14,60 +21,45 @@
                     </div>
     	<div class="register_account">
     		<h3>Register New Account</h3>
-    		<form>
+    		<form method="POST" action="">
 		   			 <table>
 		   				<tbody>
 						<tr>
 						<td>
 							<div>
-							<input type="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" >
+							<input type="text" name="name" placeholder="Enter your name">
 							</div>
 							
 							<div>
-							   <input type="text" value="City" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'City';}">
+							   <input type="text" name="city" placeholder="Your city">
 							</div>
 							
 							<div>
-								<input type="text" value="Zip-Code" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Zip-Code';}">
+								<input type="text" name="zip" placeholder="Enter your zipcode">
 							</div>
 							<div>
-								<input type="text" value="E-Mail" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-Mail';}">
+								<input type="email" name="email" placeholder="Your email">
 							</div>
 		    			 </td>
 		    			<td>
 						<div>
-							<input type="text" value="Address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Address';}">
+							<input type="text" name="address" placeholder="Enter your address">
 						</div>
-		    		<div>
-						<select id="country" name="country" onchange="change_country(this.value)" class="frm-field required">
-							<option value="null">Select a Country</option>         
-							<option value="AF">Afghanistan</option>
-							<option value="AL">Albania</option>
-							<option value="DZ">Algeria</option>
-							<option value="AR">Argentina</option>
-							<option value="AM">Armenia</option>
-							<option value="AW">Aruba</option>
-							<option value="AU">Australia</option>
-							<option value="AT">Austria</option>
-							<option value="AZ">Azerbaijan</option>
-							<option value="BS">Bahamas</option>
-							<option value="BH">Bahrain</option>
-							<option value="BD">Bangladesh</option>
-
-		         </select>
-				 </div>		        
+		    			<div>
+							<input type="text" name="country" placeholder="Enter your Country">
+						</div>		        
 	
 		           <div>
-		          <input type="text" value="Phone" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Phone';}">
-		          </div>
+							<input type="text" name="phone" placeholder="Phone">
+						</div>
 				  
-				  <div>
-					<input type="text" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
-				</div>
+				  		<div>
+							<input type="text" name="passoword" placeholder="Enter your passoword">
+						</div>
 		    	</td>
 		    </tr> 
 		    </tbody></table> 
-		   <div class="search"><div><button class="grey">Create Account</button></div></div>
+		   <div class="search"><div><button name="signup" type="submit" class="grey">Create Account</button></div></div>
 		    <p class="terms">By clicking 'Create Account' you agree to the <a href="#">Terms &amp; Conditions</a>.</p>
 		    <div class="clear"></div>
 		    </form>

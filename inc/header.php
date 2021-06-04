@@ -1,3 +1,23 @@
+<?php include 'lib/Session.php'; ?>
+<?php Session::init(); ?>
+<?php include 'config/config.php'; ?>
+<?php include 'lib/Database.php'; ?>
+<?php include 'functions/functions.php'; ?>
+<?php include 'helpers/Format.php'; ?>
+<?php spl_autoload_register(function($className){include 'classes/'.$className.'.php';});?>
+
+<?php 
+	$cat = new Category();
+	$cart = new Cart();
+	$cmr = new Customer();
+	$fm = new Format();
+	$pd = new Product();
+
+ ?>
+
+
+
+
 <!DOCTYPE HTML>
 <head>
 <title>Store Website</title>
@@ -42,7 +62,18 @@
 					<div class="cart">
 						<a href="#" title="View my shopping cart" rel="nofollow">
 								<span class="cart_title">Cart</span>
-								<span class="no_product">(empty)</span>
+								<span class="no_product">
+									<?php 
+										$getData = $cart->checkCart();
+										if ($getData) {
+											echo  "($".Session::get('sum').")"." | Qty: ".Session::get('qty');
+										}else{
+											echo("(Empty)");
+										}
+										
+									
+									?>
+								</span>
 							</a>
 						</div>
 			      </div>

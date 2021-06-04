@@ -1,5 +1,5 @@
 <?php 
-    include '../lib/Database.php';
+    include 'lib/Database.php';
     include '../helpers/Format.php';
  ?>
 
@@ -63,7 +63,7 @@
             $brandId     = $this->fm->validation($data['brandId']);
             $price       = $this->fm->validation($data['price']);
             $type        = $this->fm->validation($data['type']);
-            $body        = $this->fm->validation($data['body']);
+            $body        = $data['body'];
 
             $productName = mysqli_real_escape_string($this->db->link, $productName);
             $catId       = mysqli_real_escape_string($this->db->link, $catId);
@@ -241,6 +241,11 @@
             }
         }
 
+        // Getting featured product
+
+        public function getFproduct(){
+          
+        }
 
 
 

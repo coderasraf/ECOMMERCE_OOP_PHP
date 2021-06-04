@@ -1,5 +1,5 @@
 <?php 
-    include '../lib/Database.php';
+    include 'lib/Database.php';
     include '../helpers/Format.php';
  ?>
 
