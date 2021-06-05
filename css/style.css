@@ -559,10 +559,11 @@ p.note{
 	padding:20px 0;
 	background:#FFF;
 }
-.content h2{ 
+.content h2{
 	font-size:23px;
-	color:#6C6C6C;
 	font-family: 'Monda', sans-serif;
+	/*background: linear-gradient(to bottom, #08a8f1 55%,#007ab3 100%) !important;*/
+	/*padding: 10px;*/
 }
 .content_top, .content_bottom{
 	padding:15px 20px;
@@ -1449,16 +1450,17 @@ p.note{
   width: 100%;
 }
 .tblone th {
-  background: #666 none repeat scroll 0 0;
+  background: #08a8f1 none repeat scroll 0 0;
   color: #fff;
-  font-size: 20px;
+  font-size: 15px;
   padding: 5px 8px;
   text-align: center;
+  border: none;
 }
 .tblone td{padding:10px;text-align:center;}
 
 table.tblone tr:nth-child(2n+1){background:#fff;height:30px;}
-table.tblone tr:nth-child(2n){background:#fdf0f1;height:30px;}
+table.tblone tr:nth-child(2n){background: #07a1e721;height:30px;}
 table.tblone input[type="number"] {
   border: 1px solid #ddd;
   padding: 2px;
@@ -2546,4 +2548,72 @@ p.terms {
 
 ul#dc_mega-menu-orange {
     background: linear-gradient(to bottom, #08a8f1 55%,#007ab3 100%) !important;
+}
+.payment-option a {
+    background: linear-gradient(to bottom, #08a8f1 55%,#007ab3 100%) !important;
+    color: #fff;
+    padding: 10px 20px;
+    display: inline-block;
+    border-radius: 5px;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.payment h2 {
+    margin-bottom: 30px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+.back {
+    width: 400px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 19px 0;
+    padding-bottom: 0;
+}
+
+.back a {
+    background: #999;
+    padding: 5px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.section.group.custom-section {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.division {
+    flex: 1;
+    margin: 0 10px;
+}
+
+.division:first-child {
+    order: 1;
+}
+.division table:last-child {
+    border: none;
+    box-shadow: 0 0 5px #ddd;
+    padding: 11px;
+}
+a.btn {
+    background: linear-gradient(to bottom, #08a8f1 55%,#007ab3 100%) !important;
+    color: #fff;
+    padding: 10px 46px;
+    display: inline-block;
+    margin-top: 23px;
+    border-radius: 5px;
+}
+table.newtable th {
+    margin-top: 10px;
+    display: block;
+}
+
+table.newtable {display: flex;justify-content: space-between;padding: 5px;box-shadow: 0 0 5px #dddd;margin-top: 13px;}
+table.tblone.table.border tr:first-child {
+    background: linear-gradient(to bottom, #08a8f1 55%,#007ab3 100%) !important;
+    color: #fff;
 }

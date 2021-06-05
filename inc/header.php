@@ -105,6 +105,7 @@
 	  <?php 
 	  	if ($getData) { ?>
 	 	 <li><a href="cart">Cart</a></li>
+	 	 <li><a href="payment">Payment</a></li>
 	   <?php } ?>
 	  <li><a href="contact">Contact</a> </li>
 	  <?php 
