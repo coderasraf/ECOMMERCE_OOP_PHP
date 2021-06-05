@@ -16,5 +16,6 @@ RewriteRule ^order$ order.php [L]
 RewriteRule ^login$ login.php [L]
 RewriteRule ^profile$ profile.php [L]
 RewriteRule ^editprofile$ editprofile.php [L]
+RewriteRule ^payment$ payment.php [L]
 
 
