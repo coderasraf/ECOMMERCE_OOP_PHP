@@ -5,6 +5,17 @@
 		header("Location:login.php");
 	}
  ?>
+
+<?php 
+   
+   if (isset($_GET['orderId']) && $_GET['orderId'] == 'order') {
+      $cmrId  = Session::get('cmrId');
+      $sId = session_id();
+      $insertOrder = $cart->insertCustomerOrder($sId,$cmrId);
+   }
+
+ ?>
+
  <style>
 .tblone{width: 100%;margin: 0 auto;border: 2px solid #ddd;}.tblone tr td{text-align: justify;}
 </style>
@@ -87,7 +98,7 @@
                      <tr>
                         <td colspan="2">
                            <div class="order-btn">
-                              <a href="" class="btn">Order Now</a>
+                              <a href="?orderId=order" class="btn">Order Now</a>
                            </div>
                         </td>
                      </tr>

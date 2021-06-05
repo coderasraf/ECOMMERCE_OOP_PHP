@@ -46,7 +46,6 @@
 			return $result;
 		}
 
-
 		// Updating product quantity
 		public function cartUpdate($quantity,$cartId){
 			$query ="UPDATE tbl_cart SET quantity = '$quantity' WHERE cartId = '$cartId'";
@@ -85,6 +84,36 @@
 			$query = "DELETE FROM tbl_cart WHERE sId='$sessionId'";
 			$result = $this->db->delete($query);
 			return $result;
+		}
+
+		// Inserting customer order to the database
+		public function insertCustomerOrder($id,$cmrId){
+			// Retrive data from data base to insert order table
+			$select ="SELECT * FROM tbl_cart WHERE sId='$id'";
+			$result = $this->db->select($select);
+			if ($result) {
+					$row = $result->fetch_assoc();
+					$productId = $row['productId'];
+					$sId = $row['sId'];
+					$productName = $row['productName'];
+					$price  = $row['price'];
+					$image = $row['image'];
+					$quantity = $row['quantity'];
+			}
+			// Insert this customer data to the database
+			$query ="INSERT INTO tbl_order
+					(cmrId,productId,productName,quantity,price,image) 
+					values
+					('$cmrId','$productId','$productName','$quantity','$price','$image')";
+			$insertOrder = $this->db->insert($query);
+			if ($insertOrder) {
+				// after completing order it will be automatically delete all cart item
+				$deleteQuery = "DELETE FROM tbl_cart WHERE sId='$id'";
+				$delete = $this->db->delete($deleteQuery);
+				if ($delete) {
+	                 header("Location:order.php");
+				}
+			}
 		}
 
 
