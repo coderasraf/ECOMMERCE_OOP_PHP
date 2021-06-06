@@ -70,7 +70,6 @@
 		}
 
 		// Check cart item
-
 		public function checkCart(){
 			$sId       = session_id();
 			$sQuery    = "SELECT * FROM tbl_cart WHERE sId='$sId'";
@@ -111,11 +110,42 @@
 				$deleteQuery = "DELETE FROM tbl_cart WHERE sId='$id'";
 				$delete = $this->db->delete($deleteQuery);
 				if ($delete) {
-	                 header("Location:order.php");
+	                 header("Location:success.php");
 				}
 			}
 		}
 
+		// Getting customer all order
+		public function getOrderProducts($cmrId){
+			$query = "SELECT * FROM tbl_order WHERE cmrId='$cmrId' ORDER BY id DESC";
+			$result = $this->db->select($query);
+			if ($result) {
+				return $result;
+			}else{
+				return false;
+			}
+		}
 
+		// Check order data have or not
+		public function checkOrder($cmrId){
+			$select ="SELECT * FROM tbl_order WHERE cmrId='$cmrId'";
+			$result = $this->db->select($select);
+			if ($result) {
+				return $result;
+			}else{
+				return false;
+			}
+		}
+
+		// fetching order details from order table for showing customer
+		public function paybaleAmount($cmrId){
+			$query ="SELECT * FROM tbl_order WHERE cmrId='$cmrId' AND date = now()";
+			$select = $this->db->select($query);
+			if ($select) {
+				return $select;
+			}else{
+				return false;
+			}
+		}
 
 	}

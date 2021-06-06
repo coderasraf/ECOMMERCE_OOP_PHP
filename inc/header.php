@@ -107,7 +107,13 @@
 	 	 <li><a href="cart">Cart</a></li>
 	 	 <li><a href="payment">Payment</a></li>
 	   <?php } ?>
-	  <li><a href="contact">Contact</a> </li>
+	   <?php 
+	   	$cmrId = Session::get('cmrId');
+	   	$checkOrder = $cart->checkOrder($cmrId);
+	   	if ($checkOrder) {?>
+	  	<li><a href="order">Order</a> </li>
+	  <?php } ?>
+	  	<li><a href="contact">Contact</a> </li>
 	  <?php 
 	  	if (Session::get('custLogin') == true) { ?>
 	  		<li><a href="profile">Profile</a> </li>

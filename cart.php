@@ -19,6 +19,15 @@
 		echo "<meta http-equiv='refresh' content='0;URL=?id=live'>";
 	}
  ?>
+ <style>
+	.alert.cart-alert.alert-danger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+}
+</style>
  <div class="main">
     <div class="content">
     	<div class="cartoption">		
@@ -103,8 +112,11 @@
 					   </table>
 					<?php }else{ ?>
 
-						<div class="alert alert-danger">
+						<div class="alert cart-alert alert-danger">
 							<h1 style="font-size: 50px;text-align: center;color: red;font-weight: bold;">No products in your cart!</h1>
+							<div class="shopleft">
+							<a href="index.php"> <img src="images/shop.png" alt="" /></a>
+						</div>
 						</div>
 						<style type="text/css">
 							.none{
@@ -114,7 +126,7 @@
 					<?php } ?>
 					</div>
 					<div class="shopping">
-						<div class="shopleft">
+						<div class="shopleft none">
 							<a href="index.php"> <img src="images/shop.png" alt="" /></a>
 						</div>
 						<div class="shopright none">
@@ -126,4 +138,5 @@
     </div>
  </div>
 </div>
+
   <?php include 'inc/footer.php'; ?>
